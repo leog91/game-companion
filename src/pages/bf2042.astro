@@ -1,0 +1,66 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+type Weapon = {
+  name: string;
+  photo?: string;
+  category: string;
+  left: string;
+  sight: string;
+  ammo: string;
+};
+
+const weapons: Weapon[] = [
+  {
+    ammo: "123",
+    category: "smg",
+    left: "supressor",
+    name: "VHX-03",
+    photo:
+      "https://static.wikia.nocookie.net/battlefield/images/9/98/Battlefield_2042_VHX-D3_HUD_Icon.png",
+    sight: "redDot",
+  },
+  {
+    ammo: "asdd",
+    category: "smg",
+    left: "supressor",
+    name: "PP-29",
+    photo:
+      "https://static.wikia.nocookie.net/battlefield/images/b/b3/Battlefield_2042_PP-29_HUD_Icon.png",
+    sight: "redDot",
+  },
+  {
+    ammo: "fst",
+    category: "smg",
+    left: "supressor",
+    name: "AC9",
+    photo:
+      "https://static.wikia.nocookie.net/battlefield/images/c/c6/Battlefield_2042_AC9_HUD_Icon.png",
+    sight: "redDot",
+  },
+];
+---
+
+<Layout title="Welcome to Astro.">
+  <main class="text-white flex flex-col items-center">
+    <h1 class="text-6xl font-semibold text-yellow-500">2042 info</h1>
+
+    {
+      weapons.map((w) => (
+        <div class="flex bg-white mt-5 ">
+          {w.photo ? <img class="bg-neutral-800 w-40 " src={w.photo} /> : null}
+
+          <div class="bg-black m-0.5 w-16">{w.name}</div>
+
+          <div class="bg-black m-0.5 w-10">{w.category}</div>
+          <div class="bg-black m-0.5 w-20">{w.left}</div>
+          <div class="bg-black m-0.5 w-10">{w.ammo}</div>
+          <div class="bg-black m-0.5 w-16">{w.sight}</div>
+          <div class="bg-black m-0.5 w-24">
+            {new Date().toISOString().slice(0, 10)}
+          </div>
+        </div>
+      ))
+    }
+  </main>
+</Layout>
